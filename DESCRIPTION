@@ -1,0 +1,8 @@
+Package: ifaR.handtools
+Version: 0.1
+Date: 03/20/2015
+Title: A collection of reusable R functions used in clinical research
+Author: Hao Zhu <haozhu@hsl.harvard.edu>
+		Tom Travison <tgt@hsl.harvard.edu>
+Maintainer: Hao Zhu <haozhu@hsl.harvard.edu>
+License: GPL-3
