@@ -5,7 +5,7 @@
 #' @param x A dataframe
 #' @param caption The table caption
 #' @param label The table label
-#' @param Whether or not the rownames should be included
+#' @param include.rownames Whether or not the rownames should be included
 #' 
 #' @seealso xtable
 #' @examples

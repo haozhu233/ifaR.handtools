@@ -13,7 +13,7 @@ mktable(x, caption = "", label = "", include.rownames = T)
 
 \item{label}{The table label}
 
-\item{Whether}{or not the rownames should be included}
+\item{include.rownames}{Whether or not the rownames should be included}
 }
 \description{
 Convert R data frame object x to a nice pdf table via latex
