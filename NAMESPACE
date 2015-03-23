@@ -2,4 +2,6 @@
 
 export(mktable)
 export(outvalues)
+export(sumstat)
+export(sumtbl)
 export(timetosec)
