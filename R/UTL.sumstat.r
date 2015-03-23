@@ -33,5 +33,3 @@ sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8){
   if(!is.null(quants)) names(quants) <- paste("P", 100*q, sep="")
   c(n, mu, s, quants)
 }
-
-

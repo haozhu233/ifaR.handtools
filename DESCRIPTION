@@ -5,4 +5,5 @@ Title: A collection of reusable R functions used in clinical research
 Author: Hao Zhu <haozhu@hsl.harvard.edu>
 		Tom Travison <tgt@hsl.harvard.edu>
 Maintainer: Hao Zhu <haozhu@hsl.harvard.edu>
+Depends: data.table
 License: GPL-3

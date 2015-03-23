@@ -39,6 +39,6 @@ dt<-data.table(grp=rep(c("Control", "Treatment"), each=50),
 dt$leanmass[95]<-NA
 
 sumtbl(dt, c("age", "bmi"), c("grp"), n=F, mu=T, s=T, q=c(.25, .5, .75))
-sumtbl(dt, c("age", "bmi", "leanmass"), c("grp", "Time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
+sumtbl(dt, c("age", "bmi", "leanmass"), c("grp", "time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
 }
 

@@ -4,7 +4,7 @@
 \alias{sumstat}
 \title{Summary Statistics}
 \usage{
-sumstat(a, n = F, mu = F, s = F, q = NULL, type = 8)
+sumstat(a, n, mu, s, q, type)
 }
 \arguments{
 \item{a}{A Variable}

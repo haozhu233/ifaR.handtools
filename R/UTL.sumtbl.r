@@ -23,17 +23,17 @@
 #' dt$leanmass[95]<-NA
 #' 
 #' sumtbl(dt, c("age", "bmi"), c("grp"), n=F, mu=T, s=T, q=c(.25, .5, .75))
-#' sumtbl(dt, c("age", "bmi", "leanmass"), c("grp", "Time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
+#' sumtbl(dt, c("age", "bmi", "leanmass"), c("grp", "time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
 #' 
 #' @export
 sumtbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, type=8) {
   dt.local<-as.data.table(dataset)
-  raw.table<-dt.local[, as.list(unlist(lapply(.SD, sumstat, n=F, mu=T, s=T, q=c(.25, .5, .75)))), by=grp.by, .SDcols=variable]
+  raw.table<-dt.local[, as.list(unlist(lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q))), by=grp.by, .SDcols=variable]
   fine.table<-data.frame(t(raw.table))
   n.grp.by<-length(grp.by)
   column.name.raw<-t(fine.table[1:n.grp.by,])
   if (n.grp.by>1){
-  column.name<-apply(column.name.raw[,grp.by], 1, paste, collapse=".")}
+    column.name<-apply(column.name.raw[,grp.by], 1, paste, collapse=".")}
   else {column.name<-column.name.raw}
   fine.table<-fine.table[(n.grp.by+1):nrow(fine.table),]
   colnames(fine.table)<-column.name
