@@ -14,7 +14,6 @@
 #' @export
 mktable<-function(x, caption="", label="", include.rownames=T){
  
-  library(xtable)
   # set up shading for alternating rows 
   rws<-seq(1, nrow(x)-1, 2)
   col<-rep("\\rowcolor[gray]{0.9}", length(rws))  
