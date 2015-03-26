@@ -4,17 +4,17 @@
 \alias{timetosec}
 \title{mm:ss to number of seconds}
 \usage{
-timetosec(x)
+timetosec(var)
 }
 \arguments{
-\item{var}{Format: HH:mm:ss, mm:ss, ss}
+\item{var}{Format: mm:ss}
 }
 \value{
 A number that shows the number of seconds
 }
 \description{
 This function converts the normal expression of time
-(HH:mm:ss, mm:ss, ss) to the number of seconds. It can save a few
+(mm:ss) to the number of seconds. It can save a few
 line of codes during walking speed calculation
 }
 \examples{
