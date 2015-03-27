@@ -4,7 +4,7 @@
 \alias{sumstat}
 \title{Summary Statistics}
 \usage{
-sumstat(a, n = F, mu = F, s = F, q = NULL, type = 8)
+sumstat(a, n = F, mu = F, s = F, q = NULL, type = 8, round.N = 3)
 }
 \arguments{
 \item{a}{A Variable}
@@ -18,6 +18,8 @@ sumstat(a, n = F, mu = F, s = F, q = NULL, type = 8)
 \item{q}{A list of quantiles}
 
 \item{type}{Quantile type}
+
+\item{round.N}{Round digits}
 }
 \description{
 This function works together with data.table to generate summary

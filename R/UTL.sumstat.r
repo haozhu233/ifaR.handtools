@@ -9,6 +9,7 @@
 #' @param s Whether the value of standard deviation will be calculated
 #' @param q A list of quantiles
 #' @param type Quantile type
+#' @param round.N Round digits
 #' 
 #' @examples
 #' library(data.table)
@@ -21,15 +22,15 @@
 #' dt[, as.list(unlist(lapply(.SD, sumstat, n=F, mu=T, s=T, q=c(.25, .5, .75)))), by=.(grp, time)]
 #' 
 #' @export
-sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8){
+sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8, round.N=3){
   # computes summary statistics based on requests
   n<-switch(2-as.numeric(n), length(na.omit(a)), NULL)
   if(!is.null(n)) names(n)<-"N"
-  mu<-switch(2-as.numeric(mu), mean(a, na.rm=T), NULL)
+  mu<-switch(2-as.numeric(mu), round(mean(a, na.rm=T), round.N), NULL)
   if(!is.null(mu)) names(mu)<-"Mean"
-  s<-switch(2-as.numeric(s), sd(a, na.rm=T), NULL)
+  s<-switch(2-as.numeric(s), round(sd(a, na.rm=T), round.N), NULL)
   if(!is.null(s)) names(s)<-"SD"
-  quants<-switch(2-!is.null(q), quantile(a, q, na.rm=T, type=type), NULL)
+  quants<-switch(2-!is.null(q), round(quantile(a, q, na.rm=T, type=type), round.N), NULL)
   if(!is.null(quants)) names(quants) <- paste("P", 100*q, sep="")
   c(n, mu, s, quants)
 }

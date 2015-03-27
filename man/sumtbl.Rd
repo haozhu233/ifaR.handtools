@@ -5,7 +5,7 @@
 \title{Summary Statistics Table}
 \usage{
 sumtbl(dataset, variable, grp.by, n = F, mu = F, s = F, q = NULL,
-  type = 8)
+  type = 8, round.N = 3)
 }
 \arguments{
 \item{dataset}{Select the dataset you are working on}
@@ -23,6 +23,8 @@ sumtbl(dataset, variable, grp.by, n = F, mu = F, s = F, q = NULL,
 \item{q}{A list of quantiles}
 
 \item{type}{Quantile type}
+
+\item{round.N}{Round digits}
 }
 \description{
 This function will generate a common statistical summary table after you select
