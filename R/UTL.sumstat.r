@@ -24,13 +24,22 @@
 #' @export
 sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8, round.N=3){
   # computes summary statistics based on requests
-  n<-switch(2-as.numeric(n), length(na.omit(a)), NULL)
-  if(!is.null(n)) names(n)<-"N"
-  mu<-switch(2-as.numeric(mu), round(mean(a, na.rm=T), round.N), NULL)
-  if(!is.null(mu)) names(mu)<-"Mean"
-  s<-switch(2-as.numeric(s), round(sd(a, na.rm=T), round.N), NULL)
-  if(!is.null(s)) names(s)<-"SD"
-  quants<-switch(2-!is.null(q), round(quantile(a, q, na.rm=T, type=type), round.N), NULL)
-  if(!is.null(quants)) names(quants) <- paste("P", 100*q, sep="")
-  c(n, mu, s, quants)
+  if (all(na.omit(a) %in% 0:1) & sum(is.na(a))!=length(a)) {
+    number<-switch(2-as.numeric(mu), round(length(na.omit(a))*mean(a, na.rm=T),0), NULL)
+    if(!is.null(number)) names(number)<-"n"
+    percentage<-switch(2-as.numeric(s), paste(round(mean(a, na.rm=T), round.N)*100, "%", sep=""), NULL)
+    if(!is.null(percentage)) names(percentage)<-"p%"
+    c(number, percentage)
+  }
+  else {
+    n<-switch(2-as.numeric(n), length(na.omit(a)), NULL)
+    if(!is.null(n)) names(n)<-"N"
+    mu<-switch(2-as.numeric(mu), round(mean(a, na.rm=T), round.N), NULL)
+    if(!is.null(mu)) names(mu)<-"Mean"
+    s<-switch(2-as.numeric(s), round(sd(a, na.rm=T), round.N), NULL)
+    if(!is.null(s)) names(s)<-"SD"
+    quants<-switch(2-!is.null(q), round(quantile(a, q, na.rm=T, type=type), round.N), NULL)
+    if(!is.null(quants)) names(quants) <- paste("P", 100*q, sep="")
+    c(n, mu, s, quants)
+  }
 }
