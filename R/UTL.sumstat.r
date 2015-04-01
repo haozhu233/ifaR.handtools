@@ -27,8 +27,8 @@ sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8, round.N=3){
   if (all(na.omit(a) %in% 0:1) & sum(is.na(a))!=length(a)) {
     number<-switch(2-as.numeric(mu), round(length(na.omit(a))*mean(a, na.rm=T),0), NULL)
     if(!is.null(number)) names(number)<-"n"
-    percentage<-switch(2-as.numeric(s), paste(round(mean(a, na.rm=T), round.N)*100, "%", sep=""), NULL)
-    if(!is.null(percentage)) names(percentage)<-"p%"
+    percentage<-switch(2-as.numeric(s), round(mean(a, na.rm=T), round.N), NULL)
+    if(!is.null(percentage)) names(percentage)<-"p"
     c(number, percentage)
   }
   else {

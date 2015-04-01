@@ -29,14 +29,6 @@
 #' @export
 sumtbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, type=8, round.N=3) {
   dt.local<-as.data.table(dataset)
-  raw.table<-dt.local[, as.list(unlist(lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q, round.N=round.N))), by=grp.by, .SDcols=variable]
-  fine.table<-data.frame(t(raw.table))
-  n.grp.by<-length(grp.by)
-  column.name.raw<-t(fine.table[1:n.grp.by,])
-  if (n.grp.by>1){
-    column.name<-apply(column.name.raw[,grp.by], 1, paste, collapse=".")}
-  else {column.name<-column.name.raw}
-  fine.table<-fine.table[(n.grp.by+1):nrow(fine.table),]
-  colnames(fine.table)<-column.name
-  return(fine.table)
+  raw.table<-dt.local[, lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q, round.N=round.N), by=grp.by, .SDcols=variable]
+  return(raw.table)
 }

@@ -4,10 +4,16 @@
 \alias{mktable}
 \title{Make Table}
 \usage{
-mktable(x, caption = "", label = "", include.rownames = T)
+mktable(x, placement = "ht", caption = "", label = "", footnotes = NULL,
+  headerlabel = "", size = "small", footnotesize = "scriptsize",
+  labelwidth = 0.1, width = 1, alignment = "", use.rownames = F,
+  use.colnames = F, shade = F, header = "", headercols = 0,
+  labelrows = 1, rnd = NULL)
 }
 \arguments{
 \item{x}{A dataframe}
+
+\item{placement}{not sure what that is...}
 
 \item{caption}{The table caption}
 
