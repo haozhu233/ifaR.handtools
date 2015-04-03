@@ -11,7 +11,7 @@
 #' @param mu Whether the value of mean will be calculated
 #' @param s Whether the value of standard deviation will be calculated
 #' @param q A list of quantiles
-#' @param type Quantile type
+#' @param q.type Quantile type
 #' @param round.N Round digits
 #' 
 #' @examples
@@ -27,8 +27,8 @@
 #' sumtbl(dt, c("age", "bmi", "leanmass"), c("grp", "time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
 #' 
 #' @export
-sumtbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, type=8, round.N=3) {
+sumtbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, q.type=8, mdn=F, mnm=F, sem=F, round.N=3) {
   dt.local<-as.data.table(dataset)
-  raw.table<-dt.local[, lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q, round.N=round.N), by=grp.by, .SDcols=variable]
+  raw.table<-dt.local[, lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q, q.type=q.type, mdn=mdn, mnm=mnm, sem=sem, round.N=round.N), by=grp.by, .SDcols=variable]
   return(raw.table)
 }

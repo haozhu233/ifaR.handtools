@@ -22,7 +22,7 @@
 #' dt[, as.list(unlist(lapply(.SD, sumstat, n=F, mu=T, s=T, q=c(.25, .5, .75)))), by=.(grp, time)]
 #' 
 #' @export
-sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8, round.N=3){
+sumstat<-function(a, n=F, mu=F, s=F, q=NULL, q.type=8, mdn=F, mnm=F, sem=F,round.N=3){
   # computes summary statistics based on requests
   if (all(na.omit(a) %in% 0:1) & sum(is.na(a))!=length(a)) {
     number<-switch(2-as.numeric(mu), round(length(na.omit(a))*mean(a, na.rm=T),0), NULL)
@@ -38,8 +38,14 @@ sumstat<-function(a, n=F, mu=F, s=F, q=NULL, type=8, round.N=3){
     if(!is.null(mu)) names(mu)<-"Mean"
     s<-switch(2-as.numeric(s), round(sd(a, na.rm=T), round.N), NULL)
     if(!is.null(s)) names(s)<-"SD"
-    quants<-switch(2-!is.null(q), round(quantile(a, q, na.rm=T, type=type), round.N), NULL)
+    quants<-switch(2-!is.null(q), round(quantile(a, q, na.rm=T, q.type=q.type), round.N), NULL)
     if(!is.null(quants)) names(quants) <- paste("P", 100*q, sep="")
-    c(n, mu, s, quants)
+    mdn<-switch(2-as.numeric(mdn), round(median(a, na.rm=T), round.N), NULL)
+    if(!is.null(mdn)) names(mdn)<-"Median"
+    mnm<-switch(2-as.numeric(mnm), round(abs(mean(a, na.rm=T)-median(a, na.rm=T)), round.N), NULL)
+    if(!is.null(mnm)) names(mnm)<-"|Mean-Median|"
+    sem<-switch(2-as.numeric(sem), round(sd(a, na.rm=T)/sqrt(length(na.omit(a))), round.N), NULL)
+    if(!is.null(sem)) names(sem)<-"SD"
+    c(n, mu, s, quants, mdn, mnm, sem)
   }
 }
