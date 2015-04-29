@@ -27,6 +27,16 @@
 #' outvalues(baseline, "BMI", iqrband=3, min=15, max=35, type=8)
 #'
 #' @export
+
+ifar.extre.marker<-function(data, variable){
+  var<-data[, variable]
+  data<-data[order(var),]
+  var<-data[, variable]
+  var.marker<-paste(variable, "MARKER", sep=".")
+  data[c(1:5, as.numeric(length(var) - sum(is.na(var)) - 4):as.numeric(length(var) - sum(is.na(var)))), var.marker]<-"X"
+  data[is.na(data[, var.marker]), var.marker]<-""
+  return(data)
+}
 outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   
   # a is a vector for which we want to identify missing or outlying values
@@ -53,5 +63,5 @@ outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   dataset[out.order.NA, c(new.col.name)]<-"NA"
   dataset[out.order.high, c(new.col.name)]<-a[out.order.high]
   dataset[out.order.low, c(new.col.name)]<-a[out.order.low]
-  return(dataset[,c(1,ncol(dataset))])
+  return(dataset)
 }
