@@ -45,6 +45,7 @@ outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   # min, max are plausible lower and upper limits of a for the relevant population
   # and/or technical limiting quantities e.g. assay limit of detection
   # type is quantile type [see ?quantile()]
+  dataset<-as.data.frame(dataset)
   a<-dataset[,c(variable)]
   iqi<-quantile(a, probs=c(.25, .5, .75), na.rm=T, type=type)
   
