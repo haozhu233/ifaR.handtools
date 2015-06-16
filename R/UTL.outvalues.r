@@ -63,5 +63,5 @@ outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   dataset[out.order.NA, c(new.col.name)]<-"NA"
   dataset[out.order.high, c(new.col.name)]<-a[out.order.high]
   dataset[out.order.low, c(new.col.name)]<-a[out.order.low]
-  return(dataset)
+  return(dataset[,c(1,ncol(dataset))])
 }
