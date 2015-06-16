@@ -8,7 +8,7 @@
 #' @return Unlike function outvalues, this function will only return those 
 #' outliers and missing values.
 #' 
-#' @usage splout(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8)
+#' @usage simpout(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8)
 #' 
 #' @param dataset Name of the dataset
 #' @param variable Name of the variable.It should be entered as a character. For
@@ -21,11 +21,11 @@
 #' algorithms detailed below to be used.
 #' 
 #' @examples
-#' splout(baseline, "BMI") # default iqrband=2
-#' splout(baseline, "BMI", iqrband=3, min=15, max=35, type=8)
+#' simpout(baseline, "BMI") # default iqrband=2
+#' simpout(baseline, "BMI", iqrband=3, min=15, max=35, type=8)
 #'
 #' @export
-splout <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
+simpout <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   
   # a is a vector for which we want to identify missing or outlying values
   # iqrband is the number of lower and upper half interquartile intervals

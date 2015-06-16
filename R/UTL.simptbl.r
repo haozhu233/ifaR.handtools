@@ -23,11 +23,11 @@
 #'                leanmass=rnorm(100, mean=65, sd=6))
 #' dt$leanmass[95]<-NA
 #' 
-#' spltbl(dt, c("age", "bmi"), c("grp"), n=F, mu=T, s=T, q=c(.25, .5, .75))
-#' spltbl(dt, c("age", "bmi", "leanmass"), c("grp", "time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
+#' simptbl(dt, c("age", "bmi"), c("grp"), n=F, mu=T, s=T, q=c(.25, .5, .75))
+#' simptbl(dt, c("age", "bmi", "leanmass"), c("grp", "time"), n=T, mu=T, s=T, q=c(.25, .5, .75))
 #' 
 #' @export
-spltbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, q.type=8, mdn=F, mnm=F, sem=F, round.N=3) {
+simptbl<-function (dataset, variable, grp.by, n=F, mu=F, s=F, q=NULL, q.type=8, mdn=F, mnm=F, sem=F, round.N=3) {
   dt.local<-as.data.table(dataset)
   raw.table<-dt.local[, as.list(unlist(lapply(.SD, sumstat, n=n, mu=mu, s=s, q=q, q.type=q.type, mdn=mdn, mnm=mnm, sem=sem, round.N=round.N))), by=grp.by, .SDcols=variable]
   fine.table<-data.frame(t(raw.table))
