@@ -5,12 +5,10 @@
 #' * interquartile range (IQR). Values exceed the \code{min} and \code{max} will 
 #' also be marked as outliers. 
 #'
-#' @return This function will return a new dataset with the first column as 
-#' subject/study ID and the second column as the outlying status of the input
-#' variable. Missing values will be displayed as NA. The actual values for those
-#' outliers will be displayed. 
+#' @return Unlike function outvalues, this function will only return those 
+#' outliers and missing values.
 #' 
-#' @usage outvalues(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8)
+#' @usage splout(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8)
 #' 
 #' @param dataset Name of the dataset
 #' @param variable Name of the variable.It should be entered as a character. For
@@ -23,12 +21,11 @@
 #' algorithms detailed below to be used.
 #' 
 #' @examples
-#' outvalues(baseline, "BMI") # default iqrband=2
-#' outvalues(baseline, "BMI", iqrband=3, min=15, max=35, type=8)
+#' splout(baseline, "BMI") # default iqrband=2
+#' splout(baseline, "BMI", iqrband=3, min=15, max=35, type=8)
 #'
 #' @export
-
-outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
+splout <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   
   # a is a vector for which we want to identify missing or outlying values
   # iqrband is the number of lower and upper half interquartile intervals
@@ -55,5 +52,6 @@ outvalues <- function(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8){
   dataset[out.order.NA, c(new.col.name)]<-"Miss"
   dataset[out.order.high, c(new.col.name)]<-a[out.order.high]
   dataset[out.order.low, c(new.col.name)]<-a[out.order.low]
+  dataset<-dataset[dataset[,c(new.col.name)]!="",]
   return(dataset[,c(1,ncol(dataset))])
 }
