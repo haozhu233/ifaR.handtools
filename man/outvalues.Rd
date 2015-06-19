@@ -12,15 +12,15 @@ outvalues(dataset, variable, iqrband=2, min=NULL, max=NULL, type=8)
 \item{variable}{Name of the variable.It should be entered as a character. For
 example, "BMI".}
 
-\item{iqrband}{The multiplier of IQR. Pick 3 for the very end extreme values.
-Pick 2 to be more inclusive}
+\item{iqrband}{The IQR multiplier. Pick 3 for the very end extreme values (values > 3rd quartile + 3*IQR | values < 2nd quartile - 3*IQR) .
+Pick 2 to be more inclusive.  Defaults to 2.}
 
-\item{min}{The smallest value that will not be determined as outliers}
+\item{min}{The smallest value of the variable that will not be considered an outlier}
 
-\item{max}{The largest value that will not be determined as outliers}
+\item{max}{The largest value of the variable that will not be considered an outliers}
 
 \item{type}{An integer between 1 and 9 selecting one of the nine quantile
-algorithms detailed below to be used.}
+algorithms detailed below to be used. Defaults to .}
 }
 \value{
 This function will return a new dataset with the first column as
