@@ -19,8 +19,7 @@ Pick 2 to be more inclusive.  Defaults to 2.}
 
 \item{max}{The largest value of the variable that will not be considered an outliers}
 
-\item{type}{An integer between 1 and 9 selecting one of the nine quantile
-algorithms detailed below to be used. Defaults to .}
+\item{type}{An integer between 1 and 9 selecting One of the nine quantile algorithms discussed in Hyndman and Fan (1996). More details can be found in the quantile() documentation. Defaults to 8 (m = (p+1)/3. p[k] = (k - 1/3) / (n + 1/3). Then p[k] =~ median[F(x[k])].).}
 }
 \value{
 This function will return a new dataset with the first column as
