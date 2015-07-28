@@ -1,11 +1,14 @@
 Package: ifaR.handtools
-Version: 0.1
-Date: 03/20/2015
+Version: 0.3
+Date: 07/28/2015
 Title: A collection of reusable R functions used in clinical research
-Author: Hao Zhu <haozhu@hsl.harvard.edu>
-		Tom Travison <tgt@hsl.harvard.edu>
+Authors@R: c(
+      person("Thomas", "Travison", ,"tgt@hsl.harvard.edu", role = c("aut")),
+      person("Hao", "Zhu", , "haozhu@hsl.harvard.edu", role = c("aut", "cre"))
+      )
 Maintainer: Hao Zhu <haozhu@hsl.harvard.edu>
 Depends: data.table,
-         xtable
+         xtable,
+         reshape2
 License: GPL-3
 Suggests: testthat
