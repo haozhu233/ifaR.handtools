@@ -1,6 +1,6 @@
 #' Render multi-level table with multiple customization options enabled
 #' @author TGT
-#' @description This function provides an easy way to render a well-formated LATEX table.
+#' @description This function provides an easy way to render a well-formatted LATEX table.
 #'
 #' @export
 
